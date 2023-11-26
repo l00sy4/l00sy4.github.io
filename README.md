@@ -29,18 +29,6 @@ latest version of the **Chirpy** theme and the [CD][CD] workflow to here, so tha
 
 Follow the instructions in the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of
 the basic environment. [Git](https://git-scm.com/) also needs to be installed.
-
-## Installation
-
-Sign in to GitHub and [**use this template**][use-template] to generate a brand new repository and name it
-`USERNAME.github.io`, where `USERNAME` represents your GitHub username.
-
-Then clone it to your local machine and run:
-
-```console
-$ bundle
-```
-
 ## Usage
 
 Please see the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy#documentation).
