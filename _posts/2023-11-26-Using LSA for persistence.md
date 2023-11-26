@@ -25,10 +25,10 @@ A password filter has to export three functions to be successfully registered:
 
 - `InitializeChangeNotify`
 This function gets called when the password filter is loaded into the LSA
-- `PasswordChangeNotify`
-This is the function that gets called when the password is successfully changed
 - `PasswordFilter`
 And this function validates the newly created password
+- `PasswordChangeNotify`
+This is the function that gets called when the password is successfully changed
 
 
 Let's observe a simple implementation, which will open a cmd shell and display the message "Persistence!" if our method is successful.
