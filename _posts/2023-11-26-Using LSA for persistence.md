@@ -110,7 +110,7 @@ reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa" /v "Notifica
 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa
     Notification Packages    REG_MULTI_SZ    scecli
 ```
-We see that it holds the value `scecli`, and it is a `REG_MULTI_SZ` type, which means that it contains a sequence of null-terminated strings `Kind\0Of\0Like\0This\0\0`. The first '\0' terminates the first string, the second-from-last `\0` terminates the last string, and the final `\0` terminates the sequence.
+We see that it holds the value `scecli`, and it is a `REG_MULTI_SZ` type, which means that it contains a sequence of null-terminated strings, `Kind\0Of\0Like\0This\0\0`. The first '\0' terminates the first string, the second-from-last `\0` terminates the last string, and the final `\0` terminates the sequence.
 
 So to add our DLL to the `Notification Packages` entry, we must copy our `filter.dll` to `%windir%\System32\` and then execute:
 
@@ -133,7 +133,7 @@ LSA automatically loads all registered SSPs and AuthPkgs into its process at boo
 
 To achieve persistence using this method, all we have to do is copy the dll to `%windir%\System32` and add it's name to the `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\Security Packages` registry. Alternatively, we can use PowerSploit's `Install-SSP` function or Empire's `install_ssp` module.
 
-For example, we can look at Mimilib. Particularly, the [kssp.c](https://github.com/gentilkiwi/mimikatz/blob/master/mimilib/kssp.c) component, in which we notice that the function `kssp_SpLsaModeInitialize` is exported as `SpLsaModeInitialize` in `Mimilib.def`. Consequently, when LSA loads this SSP, the preceding function is called, and Mimilib achieves it's functionality.  
+For example, we can look at Mimilib. Particularly, the [kssp.c](https://github.com/gentilkiwi/mimikatz/blob/master/mimilib/kssp.c) component.
 
 
 ### Extras
