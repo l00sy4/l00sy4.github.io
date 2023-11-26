@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Using LSA for Windows persistence
+title: LSA as a persistence
 date: 2023-11-26
 categories: [Malware Development,Persistence]
 tags: [persistence]     
