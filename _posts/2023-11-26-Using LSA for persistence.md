@@ -140,11 +140,8 @@ For example, we can look at Mimilib. Particularly, the [kssp.c](https://github.c
 
 If you wish to see another implementation of process filters, check out [this code](https://github.com/gtworek/PSBits/blob/master/PasswordStealing/PSPY.c). I also suggest reading more about authentication packages and SSPs from the official Microsoft docs, as I haven't covered those concepts in great depth.
 
+[Authentication Packages](https://learn.microsoft.com/en-us/windows/win32/secauthn/authentication-packages)
+
+[SSPI](https://learn.microsoft.com/en-us/windows-server/security/windows-authentication/security-support-provider-interface-architecture)
+
 Thank you for reading until the end!
-
-
-### Resources 
-
-https://learn.microsoft.com/en-us/windows/win32/secauthn/authentication-packages
-
-https://learn.microsoft.com/en-us/windows-server/security/windows-authentication/security-support-provider-interface-architecture
