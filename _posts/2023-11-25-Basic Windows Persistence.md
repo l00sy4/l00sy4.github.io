@@ -2,7 +2,7 @@
 layout: post
 title: Basic Windows Persistence
 date: 2023-11-25
-categories: [Malware]
+categories: [Malware Development,Persistence]
 tags: [persistence]     # TAG names should always be lowercase
 ---
 
