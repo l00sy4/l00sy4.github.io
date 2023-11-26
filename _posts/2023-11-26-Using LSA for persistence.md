@@ -26,7 +26,7 @@ A password filter has to export three functions to be successfully registered:
 - `InitializeChangeNotify`
 This function gets called when the password filter is loaded into the LSA
 - `PasswordFilter`
-And this function validates the newly created password
+This function validates the newly created password
 - `PasswordChangeNotify`
 This is the function that gets called when the password is successfully changed
 
