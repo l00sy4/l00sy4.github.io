@@ -117,7 +117,7 @@ LSA automatically loads all registered SSPs and AuthPkgs into its process at boo
 
 - In the case of an AuthPkg, LSA calls `LsaApInitializePackage` to initialize the authentication package.
 
-To achieve persistence using this method, all we have to do is copy the dll to `%windir%\System32` and add the name of the dll to the `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\Security Packages` registry. Alternatively, we can use PowerSploit's `Install-SSP` function or Empire's `install_ssp` module.
+To achieve persistence using this method, all we have to do is copy the dll to `%windir%\System32` and add it's name to the `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\Security Packages` registry. Alternatively, we can use PowerSploit's `Install-SSP` function or Empire's `install_ssp` module.
 
 For example, we can look at Mimilib. Particularly, the [kssp.c](https://github.com/gentilkiwi/mimikatz/blob/master/mimilib/kssp.c) component, in which we notice that the function `kssp_SpLsaModeInitialize` is exported as `SpLsaModeInitialize` in `Mimilib.def`. Consequently, when LSA loads this SSP, the preceding function is called, and Mimilib achieves it's functionality.  
 
