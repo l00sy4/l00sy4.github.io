@@ -6,7 +6,6 @@ categories: [Malware]
 tags: [persistence]     # TAG names should always be lowercase
 ---
 
-### Introduction
 
 In this post, we will discuss two basic Windows persistance techniques. Keep in mind that these methods are old, and quite easily detectable, but serve as a good starting point to understanding persistence.
 
