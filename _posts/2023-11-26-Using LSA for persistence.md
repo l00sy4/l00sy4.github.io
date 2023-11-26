@@ -12,9 +12,9 @@ The Local Security Authority (LSA) is a subsystem in Windows architecture that a
 
 It achieves this through a process called Local Security Authority Subsystem Service (lsass.exe), which we all love dumping the memory of thanks to its contents. LSASS caches all kinds of credentials like the DPAPI masterkey, Kerberos passwords, tickets, ekeys, pins and so on.
 
-What may surprise you is that LSA can also be used for persistence, in which case our code will be executed inside the lsass's process memory. Consequently, the code will run as the SYSTEM user and we will be able to extract credentials from the same address space. All of these techniques involve creating DLLs to be loaded by LSA into the lsass process. 
+What may surprise you is that LSA can also be used for persistence, in which case our code will be executed inside the lsass's process memory. Consequently, the code will run as the SYSTEM user, and we will be able to extract credentials from the address space. All of these techniques involve creating DLLs to be loaded by LSA into the lsass process. 
 
-These techniques might not work if lsass is running as Protected Process Light (PPL), because our DLL has to be signed by Microsoft. I will talk about bypassing PPL in another post. For now, let's discover a few possibilities for persistence we have utilizing LSA.
+These techniques might not work if lsass is running as Protected Process Light (PPL), because our DLL has to be signed by Microsoft. I will talk about bypassing PPL in another post. For now, let's discover a few persistency procedures involving LSA.
 
 
 ### Password filters
