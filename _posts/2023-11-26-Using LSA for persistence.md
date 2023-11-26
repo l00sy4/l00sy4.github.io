@@ -121,11 +121,13 @@ To achieve persistence using this method, all we have to do is copy the dll to `
 
 For example, we can look at Mimilib. Particularly, the [kssp.c](https://github.com/gentilkiwi/mimikatz/blob/master/mimilib/kssp.c) component, in which we notice that the function `kssp_SpLsaModeInitialize` is exported as `SpLsaModeInitialize` in `Mimilib.def`. Consequently, when LSA loads this SSP, the preceding function is called, and Mimilib achieves it's functionality.  
 
+
 ### Extras
 
-If you wish to see another implementation of process filters, check out [this code](https://github.com/gtworek/PSBits/blob/master/PasswordStealing/PSPY.c). I also suggest reading more about authentication packages and SSPs from the official Microsoft docs, as I haven't covered those concepts in great depth. 
+If you wish to see another implementation of process filters, check out [this code](https://github.com/gtworek/PSBits/blob/master/PasswordStealing/PSPY.c). I also suggest reading more about authentication packages and SSPs from the official Microsoft docs, as I haven't covered those concepts in great depth.
 
 Thank you for reading until the end!
+
 
 ### Resources 
 
