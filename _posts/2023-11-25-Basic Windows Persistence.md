@@ -2,18 +2,18 @@
 layout: post
 title: Basic Windows Persistence
 date: 2023-11-25
-categories: [Malware,Persistence]
+categories: [Malware Development,Persistence]
 tags: [persistence]     # TAG names should always be lowercase
 ---
 
 
-In this post, we will discuss two basic Windows persistance techniques. Keep in mind that these methods are old, and quite easily detectable, but serve as a good starting point to understanding persistence.
+In this post, we will discuss two basic Windows persistance techniques. Keep in mind that these methods are old and easily detectable, but serve as a good starting point to understanding persistence.
 
 ### Start folder
 
 One of the oldest tricks in the book is copying our agent to the available user's startup folder. This technique is not only simple, but can be executed in a medium integrity level.
 
-To set up the persistence, we just need to copy our binary to the current user's Startup folder, located at `%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup`. Alternatively, we may place a link file.
+To set up the persistence, we need to copy our binary to the current user's Startup folder, located at `%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup`. Alternatively, we may place a link file.
 
 ```
 copy c:\Path\To\dropper.exe "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
