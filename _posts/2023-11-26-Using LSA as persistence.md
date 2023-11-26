@@ -1,6 +1,6 @@
 ---
 layout: post
-title: LSA as a persistence
+title: Using LSA as persistence
 date: 2023-11-26
 categories: [Malware Development,Persistence]
 tags: [persistence]     
