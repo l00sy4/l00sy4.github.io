@@ -102,7 +102,7 @@ Finally, to create our DLL we can compile those two as such:
 cl.exe /W0 /D_USRDLL /D_WINDLL filter.cpp filter.def /MT /link /DLL /OUT:filter.dll
 ```
 
-To register this fake "password filter" we need to change the `Notification Packages` entry in the `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa` registry key to contain the name of our DLL. But first, let's see the current value of the aforementioned entry:
+Then, to register this fake "password filter" we need to change the `Notification Packages` entry in the `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa` registry key to contain the name of our DLL. But first, let's see the current value of the aforementioned entry:
 
 ```cmd
 reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa" /v "Notification Packages" 
@@ -112,7 +112,7 @@ HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa
 ```
 We see that it holds the value `scecli`, and it is a `REG_MULTI_SZ` type, which means that it contains a sequence of null-terminated strings `Kind\0Of\0Like\0This\0\0`. The first '\0' terminates the first string, the second-from-last `\0` terminates the last string, and the final `\0` terminates the sequence.
 
-So to add our DLL to the `Notification Packages` entry, we must copy our `filter.dll` to `%windir%\System32\` and then execute
+So to add our DLL to the `Notification Packages` entry, we must copy our `filter.dll` to `%windir%\System32\` and then execute:
 
 ```cmd
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa" /v "Notification Packages" /d "scecli"\0"filter" /t REG_MULTI_SZ /f
@@ -127,7 +127,7 @@ Authentication packages are mainly used for instructing LSA on what basis to aut
 
 LSA automatically loads all registered SSPs and AuthPkgs into its process at boot:
 
-- In the case of SSP it calls the `SpLsaModeInitialize` function to obtain pointers to the functions implemented by each security package in that DLL. Those pointers are passed to the LSA in an array called `SECPKG_FUNCTION_TABLE`. 
+- In the case of SSPs it calls the `SpLsaModeInitialize` function to obtain pointers to the functions implemented by each security package in that DLL. Those pointers are passed to the LSA in an array called `SECPKG_FUNCTION_TABLE`. 
 
 - In the case of an AuthPkg, LSA calls `LsaApInitializePackage` to initialize the authentication package.
 
