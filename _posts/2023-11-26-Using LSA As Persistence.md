@@ -13,8 +13,8 @@ It achieves this through a process called Local Security Authority Subsystem Ser
 
 What may surprise you is that LSA can also be used for persistence, in which case our code will be executed inside the lsass's process memory. Consequently, the code will run as the SYSTEM user, and we will be able to extract credentials from the address space. All of these techniques involve creating DLLs to be loaded by LSA into the lsass process. 
 
-These techniques might not work if lsass is running as Protected Process Light (PPL), because the DLL we will create is not signed by Microsoft. I will talk about bypassing PPL in another post. For now, let's discover a few persistence procedures involving LSA.
-
+> These techniques might not work if lsass is running as Protected Process Light (PPL), because the DLL we will create is not signed by Microsoft. I will talk about bypassing PPL in >   another post. For now, let's discover a few persistence procedures involving LSA.
+{: .prompt-warning }
 
 ### Password filters
 
