@@ -18,7 +18,7 @@ These techniques might not work if lsass is running as Protected Process Light (
 
 ### Password filters
 
-LSA password filters are used to validate password changes against password policies. When you try to change your password, the LSA calls each registered password filter twice: once to verify the new password, and then to notify the filters that the change has been made. 
+LSA password filters are used to validate password changes against password policies. When you try to change your password, the LSA will confirm that your new password follows the policy by calling each registered password filter twice: once to verify the new password, and then to notify the filters that the change has been made.
 
 A password filter has to export three functions to be successfully registered:
 
