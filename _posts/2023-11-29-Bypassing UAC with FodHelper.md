@@ -41,7 +41,7 @@ process.Start();
 
 Let's substitute `<PAYLOAD>` for `powershell.exe`, build the code and try it out.
 
-![Alt text](image.png)
+![Image 1](/assets/image1.png)
 
 It seems like Windows Defender doesn't want to have executables in `(default)`. What if we try `powershell` instead of `powershell.exe`?...still doesn't work. Maybe `powershell "Start-Process powershell"` do?...nope. If we can't get it to execute any commands, injecting a DLL into FodHelper is the next best thing. 
 
@@ -77,7 +77,7 @@ process.Start();
 
 Having an evasive payload inside a DLL can be difficult, so let's see if this can be done any other way. What if we can somehow trick Defender into thinking the registry key has been untouched? Let's look it up.
 
-![Alt text](image2.png)
+![Image 2](/assets/image2.png)
 
 Upon reading the documentation, I have stumbled upon this:
 
