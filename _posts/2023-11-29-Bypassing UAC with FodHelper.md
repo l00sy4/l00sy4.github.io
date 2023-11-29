@@ -13,7 +13,7 @@ When launched, FodHelper will search for the `(default)` value in the `HKEY_CURR
 
 Let's try out a console app that will make `fodhelper.exe` execute our payload, marked as `<PAYLOAD>` 
 
-> All of the apps created in this post are on my GitHub, check them out! Don't forget to turn off`Cloud-Delivered protection` and `Automatic sample submission`.
+> All of the projects created in this post are on my GitHub, check them out! Don't forget to turn off`Cloud-Delivered protection` and `Automatic sample submission`.
 {: .prompt-info }
 
 ```C#
