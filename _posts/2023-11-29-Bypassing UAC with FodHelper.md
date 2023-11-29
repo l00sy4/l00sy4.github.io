@@ -106,6 +106,6 @@ Registry.CurrentUser.DeleteSubKeyTree("Software\\Classes\\rekt");
 
 ```
 
-And...this got caught by Defender again. It seems like the only way to do this is using the DLL method. I'm going to attempt , I will update this post. 
+And...this got caught by Defender again. So far, it seems like the only way to do this is using a DLL. I will update this post if I find any other method. 
 
 Thanks for reading!
