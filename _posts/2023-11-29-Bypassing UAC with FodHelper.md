@@ -7,7 +7,7 @@ tags: [evasion]
 ---
 
 
-FodHelper is a Windows binary used to manage optional features. `fodhelper.exe` is vulnerable because it is a high-integrity process that interacts with the `HKEY_CURRENT_USER` registry hive, which we can control. 
+FodHelper is a Windows binary used to manage optional features. `fodhelper.exe` is vulnerable because it is a high-integrity process that interacts with the `HKEY_CURRENT_USER` registry hive, which we can control. One notable example of malware that uses `fodhelper.exe` to bypass User Account Control (UAC) and execute malicious activities is the TrickBot trojan.
 
 When launched, FodHelper will search for the `(default)` value in the `HKEY_CURRENT_USER\Software\Classes\ms-settings\shell\open\command` registry key. This registry key does not exist by default, so if we create it and add the DelegateExecute property, it will execute our payload in a high-integrity context.
 
