@@ -45,7 +45,7 @@ Let's substitute `<PAYLOAD>` for `powershell.exe`, build the code and try it out
 
 It seems like Windows Defender doesn't want to have executables in `(default)`. What if we try `powershell` instead of `powershell.exe`?...still doesn't work. Maybe `powershell "Start-Process powershell"`?...nope. If we can't get it to execute any commands, injecting a DLL into FodHelper is the next best thing. 
 
-The easiest way to do this would be to make it execute `rundll32 <DLL_NAME>`. Since I don't think Defender would be too happy with us making FodHelper run a binary from `%windir\system32%`, let's make a copy of `run32dll`. Our payload should now be `C:\temp\luci C:\temp\payload.dll`. Let's apply these revisions to our code
+The easiest way to do this would be to make it execute `rundll32 <DLL_NAME>`. Since I don't think Defender would be too happy with us making FodHelper run a binary from `%windir%\system32`, let's make a copy of `run32dll`. Our payload should now be `C:\temp\luci C:\temp\payload.dll`. Let's apply these revisions to our code
 
 ```C#
 using System.Diagnostics;
