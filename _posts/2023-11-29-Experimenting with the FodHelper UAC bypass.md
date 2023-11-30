@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Bypassing UAC with FodHelper
+title: Experimenting with the FodHelper UAC bypass
 date: 2023-11-29
 categories: [Malware Development, Evasion]
 tags: [evasion]     
