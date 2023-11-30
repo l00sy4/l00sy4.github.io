@@ -17,7 +17,7 @@ Let's try out a console app that will make `fodhelper.exe` execute our payload, 
 {: .prompt-info }
 
 
-```C#
+```csharp
 using System.Diagnostics;
 using Microsoft.Win32;
 
