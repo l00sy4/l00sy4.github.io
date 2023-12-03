@@ -56,7 +56,7 @@ msfvenom -p windows/x64/messagebox TEXT="Task failed succesfully" TITLE="Error!"
 
 Let's take a look at it 
 
-![Alt text](image3.png)
+![Message box payload](image3.png)
 
 Now if we run our code, it should look different
 
@@ -64,11 +64,11 @@ Now if we run our code, it should look different
 python3 Encrypt.py -i payload.bin -o encryptedpayload.bin
 ```
 
-![Alt text](image4.png)
+![Encrypted message box payload](image4.png)
 
 Perfect! So we know that it works, but our payload isn't that interesting. Let's use the Havoc C2 framework to create a payload for the Demon agent (don't forget to start a listener first). This command should create a .bin file.
 
-![Generating the payload](image5.png)
+![Generating the demon agent](image5.png)
 
 We run our encryption script again, and we have our final payload. But now we need a loader. Let's try this going off this [template](https://github.com/TheD1rkMtr/Shellcode-Hide/blob/main/1%20-%20Simple%20Loader/SimpleLoader/SimpleLoader.cpp). After tweaking the code a bit, this is the final product:
 
