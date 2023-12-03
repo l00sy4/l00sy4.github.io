@@ -220,4 +220,6 @@ for(int i=0,i<sizeof(payload),i++) {
 }
 ```
 
+Piping the output of this into a file, and then copying it to our loader. It should work. Compiling it again and running it on our Windows host...
+
 ![Defender got pwned](image7.png)
