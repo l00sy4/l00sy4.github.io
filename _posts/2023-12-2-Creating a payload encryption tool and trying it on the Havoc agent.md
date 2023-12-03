@@ -64,7 +64,7 @@ Now if we run our code, it should look different
 python3 Encrypt.py -i payload.bin -o encryptedpayload.bin
 ```
 
-![Encrypted message box payload](/assets/image4.png)
+![Encrypted message box payload](/assets/image4.PNG)
 
 Perfect! So we know that it works, but our payload isn't that interesting. Let's use the Havoc C2 framework to create a payload for the Demon agent (don't forget to start a listener first). This command should create a .bin file.
 
