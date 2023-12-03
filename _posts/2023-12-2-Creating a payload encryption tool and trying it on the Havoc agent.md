@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Creating a payload encryption tool and testing it on the Havoc agent
-date: 2023-11-29
+date: 2023-12-2
 categories: [Malware Development, Evasion]
 tags: [evasion]     
 ---
