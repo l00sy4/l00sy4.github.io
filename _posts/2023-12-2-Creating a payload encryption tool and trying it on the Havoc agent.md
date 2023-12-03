@@ -8,7 +8,7 @@ tags: [evasion]
 
 Payload encryption is a must against modern security solutions, as popular code such as meterpreter is sure to get caught by signature-based detection or static file analysis. Although encryption won't get us past heuristic analysis or ML behavioral analysis, it's a step forward toward being stealthy. While this is great, the drawback to payload encryption is that it increases file entropy. Entropy is a measure of randomness within a dataset, and files with an entropy that passes a certain threshold have a good chance of being marked as malicious. There are techniques to decrease entropy, which I will discuss in a later post. 
 
-In this post, I will create a tool that implements a popular encryption algorithm for malware development. The tool will output the encrypted payload and the decrypt function of the selected encryption type. It will also generate random keys for the algorithms that need it. Afterward, I will test out an encrypted payload against Defender. 
+In this post, I will create a tool that implements a popular encryption algorithm for malware development. The tool will output the encrypted payload and generate a random key and initialization vector. Afterward, I will test out an encrypted payload against Defender. 
 
 Let's create an argument parser using the `argparse` library
 
@@ -116,7 +116,7 @@ We will also need to decrypt our payload. For this I will use the [tiny-aes-c](h
 
     AES_ctx ctx = {0};
 	AES_init_ctx_iv(&ctx, key, iv);
-	AES_CBC_decrypt_buffer(&ctx, cow, sizeof(cow));
+	AES_CBC_decrypt_buffer(&ctx, payload, sizeof(payload));
 ```
 
 Here is when I ran into a problem. The python script I created encrpted the payload using AES-EAX, and tiny-aes-c uses AES_CBC. Let's adapt our script
@@ -171,7 +171,7 @@ unsigned char payload[] = {
 	}
 	
     AES_ctx ctx = {0};
-	AES_init_ctx_iv(&ctx, cheese, chocolate);
+	AES_init_ctx_iv(&ctx, key, iv);
 	AES_CBC_decrypt_buffer(&ctx, payload, sizeof(payload));
 
 	RtlMoveMemory(alloc_mem, payload, sizeof(payload));
