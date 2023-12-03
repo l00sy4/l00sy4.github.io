@@ -37,10 +37,9 @@ social:
   name: Andrei V
   email: andreiviczian@protonmail.com # change to your email address
   links:
-    # The first element serves as the copyright owner's link # change to your twitter homepage
+    # The first element serves as the copyright owner's link
     - https://github.com/l00sy4
     - https://twitter.com/GigelV41464 
-    #change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
