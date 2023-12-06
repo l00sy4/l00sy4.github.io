@@ -7,6 +7,8 @@ tags: [CTF]
 ---
 
 
+This is a beginner binary exploitation challenge that serves as a good introduction to buffer overflow.
+
 Let's start by taking a look at the file
 
 ```
