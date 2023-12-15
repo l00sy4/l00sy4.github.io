@@ -153,7 +153,7 @@ Thank you!
 ```
 
 Looking at the registers, we see that RSP has been overwritten with `faaaaaaa`. This means that we need 40 bytes of filler to break the stack
-![ESP register](Image12.png)
+![ESP register](/assets/Image12.png)
 
 But first, let's look for a ROP gadget. We need a gadget because of a MOVAPS issue in Ubuntu 18.04, where this binary was compiled from. To achieve this we can use the `ROPgadget` tool. Sifting through the output, we notice this:
 
