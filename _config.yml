@@ -16,7 +16,7 @@ timezone: Europe/Bucharest
 
 title: luci4 # the main title
 
-tagline: Interested in malware development and red team ops # it will display as the sub-title
+tagline: Interested in the development of malware and exploits # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   Not much to say here!
