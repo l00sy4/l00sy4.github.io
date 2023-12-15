@@ -25,7 +25,7 @@ Let's start by taking a look at the file
 It seems that we are dealing with a 64-bit binary with a non-executable stack and a stack canary. Let's try running it
 
 ```
-$   ./boi
+$ ./boi
 
 Are you a big boiiiii??
 Not really
@@ -86,8 +86,8 @@ Let's use gdb to set a breakpoint at that address, then run the binary.
 ```
 $ gdb boi
 
-gdb > break *0x4006a5
-gdb > run
+pwngdb > break *0x4006a5
+pwngdb > run
 Are you a big boiiiii??
 yea
 ```
@@ -113,3 +113,4 @@ target.send(payload)
 # Drop to an interactive shell so we can interact with our shell
 target.interactive()
 ```
+And that's it!
