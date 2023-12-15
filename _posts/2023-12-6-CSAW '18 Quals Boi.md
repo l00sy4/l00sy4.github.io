@@ -2,8 +2,8 @@
 layout: post
 title: CSAW 2018 Qualifiers - Big Boy
 date: 2023-12-6
-categories: [CTF, Binary Exploitation]
-tags: [CTF]     
+categories: [Binary Exploitation, Buffer Overflow]
+tags: [CTF, BOF]     
 ---
 
 
