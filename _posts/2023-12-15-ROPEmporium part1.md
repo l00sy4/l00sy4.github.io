@@ -14,7 +14,7 @@ ROPEmporium is a series of eight challenges meant to teach return oriented progr
 - ARMv5
 - MIPS
 
-In this post I will cover the x86_64 version of the first two challanges. The first being ret2win.
+In this post I will cover the x86_64 version of the first two challenges, the first being ret2win.
 
 ### ret2win
 
@@ -91,7 +91,7 @@ undefined8 main(void)
 }
 ```
 
-The main function prints those two lines and calls `pwnme()`. Let's observe the `pwnme()` function
+The main function prints two lines and calls `pwnme()`. Let's observe the `pwnme()` function
 
 ```C
 void pwnme(void)
@@ -211,7 +211,7 @@ print(flag)
 Let's run the script and see what happens
 
 ```
-$ python3 exploit.py
+$ python3 exploit_ret2win.py
 
 [*] '/home/ret2win'
     Arch:     amd64-64-little
@@ -264,7 +264,7 @@ Thank you!
 Exiting
 ```
 
-Opening the binary in Ghidra, we see that it's very similar to the previous one. Looking at the `pwnme` function
+Opening the binary in Ghidra, we see that the main functions calls `pwnme`, as in the previous challenge. Looking at the `pwnme` function
 
 ```C
 void pwnme(void)
@@ -292,7 +292,7 @@ void usefulFunction(void)
 }
 ```
 
-The function in question calls `system` to execute the `/bin/ls` command. However, by overwriting the argument of `system`, we can manipulate it to execute something else. We can use `rabin2` to search for any useful strings in the binary.
+The function in question calls `system` to execute the `/bin/ls` command. However, by overwriting the argument of `system`, we can manipulate it to execute a different command. We can use `rabin2` to search for any useful strings in the binary.
 
 ```
 $ rabin2 -z split
@@ -322,7 +322,7 @@ $ ROPgadget --binary split
 <SNIP>
 ```
 
-Perfect! We found a gadget which pops a value from the stack into the RDI register. We also note the `ret` gadget which we will need to solve the MOVAPS issue. 
+Perfect! We found a gadget which pops a value from the stack into the RDI register. We also note the address of the `ret` gadget, which we will need to solve the MOVAPS issue. 
 
 All in all, To create the exploit we will need:
 
@@ -374,7 +374,7 @@ print(flag)
 Running the exploit...
 
 ```
-$ python3 3sploit.py      
+$ python3 exploit_split.py      
 
 [*] '/home/split'
     Arch:     amd64-64-little
