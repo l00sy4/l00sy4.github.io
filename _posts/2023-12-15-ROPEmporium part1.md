@@ -16,7 +16,7 @@ ROPEmporium is a series of eight challenges meant to teach return oriented progr
 
 In this post I will cover the x86_64 version of the first two challenges, the first being ret2win.
 
-### ret2win
+## ret2win
 
 Our goal is to read the `flag.txt` file provided in the ZIP archive. Let's begin by taking a look at the binary
 
@@ -228,7 +228,7 @@ ROPE{a_placeholder_32byte_flag!}
 Jackpot!
 
 
-### split
+## split
 
 I noticed that this challenge has the same flag as the previous one, so I decided to change it up. Again, we will start by inspecting the binary
 
