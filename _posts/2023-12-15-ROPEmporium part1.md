@@ -2,7 +2,7 @@
 layout: post
 title: ROPEmporium Part 1
 date: 2023-12-15
-categories: Binary Exploitation, Return Oriented Programming
+categories: [Binary Exploitation, Return Oriented Programming]
 tags: [ROP]
 ---
 
