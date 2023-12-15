@@ -78,7 +78,7 @@ Exiting
 
 So the binary asks for our input, specifying that it will try and fit 56 bytes of user input into a buffer of 32 bytes. Let's analyze the file in Ghidra and  see if the message is truthful
 
-```C
+```cpp
 undefined8 main(void)
 
 {
@@ -93,7 +93,7 @@ undefined8 main(void)
 
 The main function prints two lines and calls `pwnme()`. Let's observe the `pwnme()` function
 
-```C
+```cpp
 void pwnme(void)
 
 {
@@ -118,7 +118,7 @@ The binary was truthful, as our input is allocated a buffer of 32 bytes while th
 
 Looking at the function list in Ghidra, we notice the `ret2win` function
 
-```C
+```cpp
 void ret2win(void)
 
 {
@@ -266,7 +266,7 @@ Exiting
 
 Opening the binary in Ghidra, we see that the main functions calls `pwnme`, as in the previous challenge. Looking at the `pwnme` function
 
-```C
+```cpp
 void pwnme(void)
 
 {
@@ -283,7 +283,7 @@ void pwnme(void)
 
 The `read` function tries to read 0x60 bytes (96 in decimal) from our input, whose buffer is 32 bytes. Again, this will result in a buffer overflow. Taking a look at the symbol tree, we notice the `usefulFunction` function
 
-```C
+```cpp
 void usefulFunction(void)
 
 {
