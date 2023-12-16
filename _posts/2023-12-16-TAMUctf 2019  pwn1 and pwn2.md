@@ -141,7 +141,7 @@ We notice that the function `gets` (which is vulnerable to BOF) is used to store
 
 All in all, the exploit should look something like this
 
-```python3
+```python
 from pwn import *
 
 # Initialize the ELF file
@@ -284,7 +284,7 @@ All defined functions:
 
 We have all the information we need to create the exploit
 
-```python3
+```python
 from pwn import *
 
 # Initialize the ELF file
