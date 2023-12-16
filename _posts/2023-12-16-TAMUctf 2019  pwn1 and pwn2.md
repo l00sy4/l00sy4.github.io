@@ -2,7 +2,7 @@
 layout: post
 title: TAMUctf 2019 - pwn1 and pwn2
 date: 2023-12-16
-categories: [Binary Exploitation], [Buffer Overflow]
+categories: [Binary Exploitation, Buffer Overflow]
 tags: [BOF]
 ---
 
