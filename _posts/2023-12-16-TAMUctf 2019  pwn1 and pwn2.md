@@ -106,7 +106,7 @@ So we see that the function:
 
 **line 20** - If `ComparisonValue` is not 0, it means that our input didn't match the aforementioned string. In that case, it prints out `I don\'t know that! Auuuuuuuugh!` and exits. If `ComparisonValue` is 0, it proceeds to ask us what our quest it.
 
-**line 26** - Similarly to the previous check, it stores the input in a `0x2b` byte buffer, and uses `strcmp` to compare our input with the string `To seek the Holy Grail.\n`. If the comparison fails, we get `I don\'t know that! Auuuuuuuugh!` again.
+**line 26** - Similarly to the previous check, it stores the input in a `0x2b` byte buffer, and uses `strcmp` to compare our input with the string `T  o seek the Holy Grail.\n`. If the comparison fails, we get `I don\'t know that! Auuuuuuuugh!` again.
 
 **line 33** - It prompts us for the secret, and uses `gets` to read our input. Then it checks to see if `Target` is `-0x215eef38` (`0xDEA110C8` unsigned). If true, it calls the `print_flag` function, otherwise it prints out `I don\'t know that! Auuuuuuuugh!`.
 
@@ -219,7 +219,7 @@ Which function would you like to call?
 print_flag
 ```
 
-The binary prompts us for the name (or address?) of the function which we want to call. I attempted `print_flag`, which was the lowest hanging fruit, to no result. Upon analyzing the main function in Ghidra
+The binary prompts us for the name (or address?) of the function which we want to call. I attempted `print_flag`, which was the lowest hanging fruit, to no avail. Upon analyzing the main function in Ghidra
 
 ```c
 int main(void)
@@ -265,10 +265,10 @@ This function:
 - Copies `0x1f` (31 decimal) bytes from `argument` into the `ArgumentBuffer` buffer using `strncpy`
 - If `argument` is the string "one", it calls the function `one` by casting a pointer. 
 
-Since `strncpy` copies 31 bytes into a 30 byte buffer, we have a buffer overflow. To complete this challenge, we need to overwrite the last byte of `FunctionAddress` (which is initialized as the address of the `two` function) with the last byte of `print_flag`'s address. This will make the function cast a pointer to `print_flag`. Let's use `pwngdb` to get the address of these two functions.
+Since `strncpy` copies 31 bytes into a 30 byte buffer, we have a buffer overflow. To complete this challenge, we need to overwrite the last byte of `FunctionAddress` (which is initialized as the address of the `two` function) with the last byte of `print_flag` 's address. This will make the function cast a pointer to `print_flag`. Let's use `pwngdb` to get the address of these two functions.
 
 ```
-$ gdb pwn2                                                                                                                    [~]
+$ gdb pwn2
 
 pwndbg> info functions
 
