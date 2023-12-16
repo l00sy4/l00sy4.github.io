@@ -145,7 +145,6 @@ All in all, the exploit should look something like this
 from pwn import *
 
 # Initialize the ELF file
-
 elf = ELF("pwn1")
 
 # Start the process
