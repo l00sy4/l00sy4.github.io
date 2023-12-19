@@ -264,7 +264,7 @@ Thank you!
 Exiting
 ```
 
-Opening the binary in Ghidra, we see that the main functions calls `pwnme`, as in the previous challenge. Looking at the `pwnme` function
+Opening the binary in Ghidra, we see that the main functions calls `pwnme` just like in the previous challenge. Looking at the `pwnme` function
 
 ```cpp
 void pwnme(void)
@@ -308,7 +308,7 @@ nth paddr      vaddr      len size section type  string
 0   0x00001060 0x00601060 17  18   .data   ascii /bin/cat flag.txt
 ```
 
-Fortunately, we discover that the  `/bin/cat flag.txt` string is present. If we overwrite the argument of `system` to this string, we get the flag. 
+Fortunately, we discover that the  `/bin/cat flag.txt` string is present in the file. If we overwrite the argument of `system` to this string, we get the flag. 
 
 In order to achieve this we need to overwrite the RDI register, as that is where `system` expects its argument to be. Let's use `ROPgadget` to look for a gadget that may help us
 
