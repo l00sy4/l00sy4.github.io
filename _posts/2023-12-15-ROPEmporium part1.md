@@ -170,8 +170,8 @@ $ ROPgadget --binary ret2win
 Finally, to create the exploit we will need to send:
 
 - 40 bytes of filler in order to break the stack
-- the address of the aforemention ROP gadget
-- the address of the `ret2win` function, which we want to be called so we can get the flag
+- the address of the aforementioned ROP gadget
+- the address of the `ret2win` function, which we want to call as to get the flag
 
 For that we can use the pwntools library.
 
