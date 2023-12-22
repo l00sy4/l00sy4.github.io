@@ -33,6 +33,7 @@ To achieve this we can use Process Monitor from the SysInternal suite. Apply the
 
 Now we will be able to see every process activity that meets this critera. To speed things up, we can open random applications (like Access, Outlook and so on). We should look for an object that is not referenced very frequently, as executing the payload every second is not a good idea.
 
+EDR solutions could detect this. For [example](https://www.elastic.co/guide/en/security/8.11/component-object-model-hijacking.html) {: .prompt-warning }
 
 #### Example 1 - InprocServer32
 
