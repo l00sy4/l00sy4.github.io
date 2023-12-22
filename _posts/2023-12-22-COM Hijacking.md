@@ -9,7 +9,7 @@ tags: [persistence]
 > COM is a system within Windows to enable interaction between software components through the operating system. 
   References to various COM objects are stored in the Registry
 
-- https://attack.mitre.org/techniques/T1546/015/
+- [MITRE](https://attack.mitre.org/techniques/T1546/015/)
 
 We can establish persistence through COM by hijacking a COM object. When the tampered object is referenced, our payload will be executed in place of the original software component. Hijacking COM objects that are in use can lead to broken applications, so we should look for applications that try to reference broken/unused keys.
 
