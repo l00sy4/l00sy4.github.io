@@ -30,4 +30,4 @@ The exam is also hosted on Snap Labs, and can be scheduled anytime after purchas
 
 I think that the exam was very fair as you are tested on what you were actually taught. No unrealistic rabbitholes made to waste time and no weird curveballs; you have all you need in the course. I believe that going back and practicing the TTPs with Defender and AppLocker turned on is enough preparation to get all 8 flags. Make sure to also do the extra challenges mentioned throughout the material and you will most likely succeed.
 
-I started the exam sunday afternoon and got 6 flags by evening. I could have continued with the last 2, but got a bit lazy and called it quits.
+I started the exam sunday afternoon and got 6 flags by evening. I could have continued with the last 2, but I was a bit sick and called it quits.
