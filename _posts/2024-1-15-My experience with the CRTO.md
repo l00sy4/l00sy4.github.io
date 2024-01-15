@@ -18,6 +18,10 @@ One of my favourite aspects of the course was the **conciseness**. No scrolling 
 
 All in all, I finished the course in about 2 and a half weeks.
 
+### The community
+
+CRTO students can join the Zero-Point Security discord server, where you can ask questions, get someone to help with troubleshooting or just hang out. I found the Discord to be of great help, as I found solutions for some of my problems going through the lab.
+
 ### The lab
 
 The CRTO lab is sandbox-style lab hosted on the Snap Labs platform. Purchasing the lab is optional, but I highly recommend it as it is the **best (legal) way to get experience with Cobalt Strike**. I approached the lab by following along the course, whilst taking notes.
