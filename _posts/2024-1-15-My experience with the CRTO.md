@@ -2,7 +2,7 @@
 layout: post
 title: My experience with the CRTO + review
 date: 2024-1-15
-categories: [Miscellaneous]
+categories: [Miscellaneous, META]
 tags: [misc]     
 ---
 
