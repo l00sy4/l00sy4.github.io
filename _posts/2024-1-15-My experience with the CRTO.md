@@ -6,7 +6,7 @@ categories: [Miscellaneous, META]
 tags: [misc]     
 ---
 
-Yesterday I passed the Certified Red Team Operator (CRTO) exam and received my badge by email. I decided to pursue this certification to solidify my foundation in red teaming and to gain experience with Cobalt Strike. Overall I am very happy with what I got, especially considering the price, and in this article I will talk about my experiences with the course, exam and community.
+Yesterday I passed the Certified Red Team Operator (CRTO) exam and received my badge by email. I decided to pursue this certification to solidify my foundation in red teaming and to gain experience with Cobalt Strike. Overall I am very happy with what I got, especially considering the price. In this article I will talk about my experiences with the course, exam and community.
 
 ### The Course
 
