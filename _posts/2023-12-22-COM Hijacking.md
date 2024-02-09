@@ -11,7 +11,7 @@ tags: [persistence]
 
 - [MITRE](https://attack.mitre.org/techniques/T1546/015/)
 
-We can establish persistence through COM by hijacking a COM object. When the tampered object is referenced, our payload will be executed in place of the original software component. Hijacking COM objects that are in use can lead to broken applications, so we should look for applications that try to reference broken/unused keys.
+We can establish persistence through COM by hijacking a COM object. When the hijacked object is referenced, our payload is executed instead of the original software component. Hijacking COM objects that are in use can lead to broken applications, so we should look for applications that try to reference broken/unused keys.
 
 To achieve this we can use Process Monitor from the SysInternal suite. Apply these filters
 
@@ -31,7 +31,7 @@ To achieve this we can use Process Monitor from the SysInternal suite. Apply the
 
 >   This registry contains the full path to a COM server application. This means that we can specify the path to an executable which we want executed
 
-Now we will be able to see every process activity that meets this critera. To speed things up, we can open random applications (like Access, Outlook and so on). We should look for an object that is not referenced very frequently, as executing the payload every second is not a good idea.
+Now we will be able to see any process activity that meets these criteria. To speed things up, we can open random applications (such as Access, Outlook and so on). We should look for an object that is not referenced very often, as executing the payload every second is not a good idea.
 
 > OPSEC WARNING: EDR solutions have rules that can detect this technique. For [example](https://www.elastic.co/guide/en/security/8.11/component-object-model-hijacking.html)
 {: .prompt-warning }
