@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [META] Where did all the posts go?
+title: Where did all the posts go?
 date: 2024-2-16
 categories: [Miscellaneous, META]
 tags: [META]     
